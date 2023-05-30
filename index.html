@@ -8,52 +8,53 @@
     font-weight: bold;
     display: inline-block;
 }
-/* 011 */
-.button011 a {
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 240px;
-    padding: 10px 25px;
-    color: #313131;
-    transition: 0.3s ease-in-out;
-    font-weight: 600;
-    background: #eee;
-    overflow:hidden;
+.my-parts ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
-.button011 a:before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 150%;
-    height: 500%;
-    content: "";
-    -webkit-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-    -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
-    transform: translateX(-98%) translateY(-25%) rotate(45deg);
-    background: #6bb6ff;
-    opacity: 0.2;
+.my-parts ul::after {
+	content: "";
+	display: block;
+	clear: both;
 }
-.button011 a:hover:before {
-    -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
-    transform: translateX(-9%) translateY(-25%) rotate(45deg);
+.my-parts ul li {
+	float: left;
+	border-left: 1px solid rgba(0,0,0,.1);
+}
+.my-parts ul li:first-child {
+	border-left: none;
+}
+.my-parts ul li a {
+	display: block;
+	padding: .4em .8em;
+	text-decoration: none;
+	color: #333;
+	background: #fff;
+	text-align: center;
+}
+.my-parts ul li a:hover {
+	background: #eee;
 }
 </style>
 <body bgcolor="#b0c4de">
 <div class="example3">PastButter2907のサイト</div>
 <p>ダサいサイト作ろうとしたら案の定出来たわ<p>
-<div class="button011">
-	<a href="https://twitter.com/PastButter2907">Twitter</a>
-	<a href="https://discord.com/channels/1109668975618564187/1109668976251916331">ディスコード</a>
-</div>
+<nav class="my-parts">
+	<ul>
+		<li><a href="https://pastbutter2907.github.io/PastButter2907/">ホーム</a></li>
+		<li><a href="https://twitter.com/PastButter2907">Twitter</a></li>
+			<li><a href="https://discord.com/channels/1109668975618564187/1109668976251916331">Discord</a></li>
+		</ul>
+</nav>
+	</div>
 <body>
   <hr>
 </body>
 <h1>ニュース</h1>
 <dl>
+<dt>2023/5/30</dt>
+<dd>ただいま</dd>
 <dt>2023/5/28</dt>
 <dd>もう一回寝てくる</dd>
 <dt>2023/5/26</dt>
@@ -76,7 +77,7 @@
 </dl>
 <style>
 dl{
-  background:#eee;
+  background:#ffffff;
   padding:10px;
   width:550px;
 }
