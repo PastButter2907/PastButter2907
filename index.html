@@ -43,6 +43,41 @@
 body>div{
     width: auto;/*初期値であるため指定不要*/
 }
+	#CDT {/*年明けのカウントダウン（いつでも削除OK）/
+width: 100%;
+text-align: center;
+font-size: 49px;
+font-weight: bold;
+color: #ffffff;
+font-family: 'Noto Sans JP', sans-serif;}
+#CDT01 {
+width: 100%;
+text-align: center;
+font-size: 49px;
+font-weight: bold;
+color: #ffffff;
+font-family: 'Noto Sans JP', sans-serif;
+}
+
+.ttl {
+color: #ffffff;
+font-size: 28px;
+font-weight: 600;
+text-align: center;
+margin: 0;
+line-height: 1.5;
+}
+
+.timer {
+    background: #d00000;
+    margin: 5px auto;
+    padding: 5px;
+    text-align: center;
+    font-size: 2.5rem;
+    color: #fff;
+    line-height: 1.5;
+    font-weight: 600;
+}
 </style>
 <body bgcolor="#b0c4de">
 <div class="example3">PastButter2907のサイト</div>
@@ -60,6 +95,58 @@ body>div{
 <br>
 
 	
-	<div style="padding: 10px; margin-bottom: 10px; border: 5px double #333333;">
-	今年もありがとうございました、来年もよろしくお願いします。
-	</div>		
+	<section class="timer">
+年明けまで残り
+<div id="CDT"></div>
+</section>	
+	<script>
+		function CountdownTimer(elm, tl, mes) {
+this.initialize.apply(this, arguments);
+}
+CountdownTimer.prototype = {
+initialize: function (elm, tl, mes) {
+this.elem = document.getElementById(elm);
+this.tl = tl;
+this.mes = mes;
+}, countDown: function () {
+var timer = '';
+var today = new Date();
+var day = Math.floor((this.tl - today) / (24 * 60 * 60 * 1000));
+var hour = Math.floor(((this.tl - today) % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+var min = Math.floor(((this.tl - today) % (24 * 60 * 60 * 1000)) / (60 * 1000)) % 60;
+var sec = Math.floor(((this.tl - today) % (24 * 60 * 60 * 1000)) / 1000) % 60 % 60;
+var milli = Math.floor(((this.tl - today) % (24 * 60 * 60 * 1000)) / 10) % 100;
+var me = this;
+
+if ((this.tl - today) > 0) {
+if (day)
+timer += '' + day + '日';
+if (hour)
+timer += '' + hour + '時間';
+timer += '' + this.addZero(min) + '分' +
+    this.addZero(sec) + '秒';
+this.elem.innerHTML = timer;
+tid = setTimeout(function () {
+me.countDown();
+}, 10);
+} else {
+this.elem.innerHTML = this.mes;
+return;
+}
+}, addZero: function (num) {
+return ('0' + num).slice(-2);
+}
+}
+function CDT() {
+var tl = new Date('2024/1/1 00:00:00');// ここで日付を指定
+var timer = new CountdownTimer('CDT', tl, 'あけましておめでとうございます。');
+timer.countDown();
+}
+
+
+
+window.onload = function () {
+CDT();
+CDT01();
+}
+	</script>
